@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class operator {
+public class Operator {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
