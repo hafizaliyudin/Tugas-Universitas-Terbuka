@@ -1,9 +1,12 @@
-TUGAS 2
-Nama: Muhamad Hafizh Aliyuddin
-Nim: 058005434
-Matkul: Algoritma dan Pemrograman
+TUGAS 2  
+Nama: Muhamad Hafizh Aliyuddin  
+Nim: 058005434  
+Matkul: Algoritma dan Pemrograman  
+
 
 berikut untuk capture test case yang akan di lakukan dengan beberapa skema test case
+
+
 
 testing sistem dengan test case input 1 jam lembur
 
