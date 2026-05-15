@@ -10,11 +10,11 @@ berikut untuk capture test case yang akan di lakukan dengan beberapa skema test 
 
 testing sistem dengan test case input 1 jam lembur
 
-![alt text](image.png)
+![alt text](image.png)  
 
-![alt text](image-1.png)
+![alt text](image-1.png)  
 
-![alt text](image-2.png)
+![alt text](image-2.png)  
 
 testing sistem dengan test case input 2 jam lembur
 ![alt text](image-3.png)
