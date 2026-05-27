@@ -4,78 +4,97 @@ public class Operator {
 
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        // Array Gaji Pokok
-        int[] gaji = {5000000, 6500000, 9500000};
+        // ================= ARRAY =================
+        String[] daftarGolongan = {"A", "B", "C"};
+        double[] arrayGaji = {5000000, 6500000, 9500000};
+        double[] arrayLembur = {30, 32, 34, 36, 38};
 
-        // Array Persentase Lembur
-        double[] lembur = {0.30, 0.32, 0.34, 0.36, 0.38};
+        System.out.println("====================================================");
+        System.out.println("            PROGRAM PENGGAJIAN KARYAWAN             ");
+        System.out.println("====================================================");
 
-        String golongan;
-        int jamLembur;
-        int gajiPokok = 0;
-        double persenLembur = 0;
-        double gajiLembur;
-        double totalGaji;
+        // ================= INPUT =================
+        System.out.print("Masukkan Golongan Karyawan (A / B / C) : ");
+        String golongan = sc.nextLine().trim().toUpperCase();
 
-        System.out.println("================================================");
-        System.out.println("         PROGRAM PERHITUNGAN GAJI KARYAWAN      ");
-        System.out.println("================================================");
+        System.out.print("Masukkan Jam Lembur (0 jika tidak)     : ");
+        int jamLembur = sc.nextInt();
 
-        // Input Golongan
-        System.out.print("Masukkan Golongan Karyawan [A/B/C] : ");
-        golongan = input.nextLine();
+        // ================= PROSES GAJI =================
+        double gajiPokok = 0;
 
-        // Menentukan Gaji Pokok
-        if (golongan.equalsIgnoreCase("A")) {
-            gajiPokok = gaji[0];
-        } else if (golongan.equalsIgnoreCase("B")) {
-            gajiPokok = gaji[1];
-        } else if (golongan.equalsIgnoreCase("C")) {
-            gajiPokok = gaji[2];
+        // Mengambil gaji dari array berdasarkan golongan
+        if (golongan.equals(daftarGolongan[0])) {
+            gajiPokok = arrayGaji[0];
+
+        } else if (golongan.equals(daftarGolongan[1])) {
+            gajiPokok = arrayGaji[1];
+
+        } else if (golongan.equals(daftarGolongan[2])) {
+            gajiPokok = arrayGaji[2];
+
         } else {
-            System.out.println("\nGolongan tidak valid!");
+            System.out.println("\n[!] Golongan tidak valid!");
+            sc.close();
             return;
         }
 
-        // Input Jam Lembur
-        System.out.print("Masukkan Jumlah Jam Lembur        : ");
-        jamLembur = input.nextInt();
+        // ================= PROSES LEMBUR =================
+        double persenLembur = 0;
 
-        // Menentukan Persentase Lembur
         if (jamLembur == 1) {
-            persenLembur = lembur[0];
+            persenLembur = arrayLembur[0];
+
         } else if (jamLembur == 2) {
-            persenLembur = lembur[1];
+            persenLembur = arrayLembur[1];
+
         } else if (jamLembur == 3) {
-            persenLembur = lembur[2];
+            persenLembur = arrayLembur[2];
+
         } else if (jamLembur == 4) {
-            persenLembur = lembur[3];
+            persenLembur = arrayLembur[3];
+
         } else if (jamLembur >= 5) {
-            persenLembur = lembur[4];
+            persenLembur = arrayLembur[4];
+
         } else {
             persenLembur = 0;
         }
 
-        // Perhitungan
-        gajiLembur = gajiPokok * persenLembur;
-        totalGaji = gajiPokok + gajiLembur;
+        // ================= PERHITUNGAN =================
+        double gajiLembur = gajiPokok * (persenLembur / 100);
+        double totalPenghasilan = gajiPokok + gajiLembur;
 
-        // Output
-        System.out.println("\n================================================");
-        System.out.println("              HASIL PERHITUNGAN                 ");
-        System.out.println("================================================");
-        System.out.println("Golongan Karyawan  : " + golongan.toUpperCase());
-        System.out.println("Gaji Pokok         : Rp " + gajiPokok);
-        System.out.println("Jam Lembur         : " + jamLembur + " Jam");
-        System.out.println("Persentase Lembur  : " + (persenLembur * 100) + "%");
-        System.out.println("Gaji Lembur        : Rp " + gajiLembur);
-        System.out.println("------------------------------------------------");
-        System.out.println("Total Gaji         : Rp " + totalGaji);
-        System.out.println("================================================");
-        System.out.println("        Terima Kasih Telah Menggunakan Program  ");
-        System.out.println("================================================");
+        // ================= OUTPUT =================
+        System.out.println("\n====================================================");
+        System.out.println("                 RINCIAN PENGHASILAN                ");
+        System.out.println("====================================================");
 
+        System.out.printf("  Golongan Karyawan   : %s%n", golongan);
+        System.out.printf("  Gaji Pokok          : Rp %,.0f%n", gajiPokok);
+
+        if (jamLembur > 0) {
+
+            System.out.printf("  Jam Lembur          : %d Jam%n", jamLembur);
+            System.out.printf("  Persentase Lembur   : %.0f%%%n", persenLembur);
+            System.out.printf("  Gaji Lembur         : Rp %,.0f%n", gajiLembur);
+
+        } else {
+
+            System.out.println("  Jam Lembur          : Tidak Lembur");
+            System.out.println("  Persentase Lembur   : 0%");
+            System.out.println("  Gaji Lembur         : Rp 0");
+
+        }
+
+        System.out.println("----------------------------------------------------");
+        System.out.printf("  TOTAL PENGHASILAN  : Rp %,.0f%n", totalPenghasilan);
+        System.out.println("====================================================");
+        System.out.println("          Terima Kasih Telah Menggunakan Program    ");
+        System.out.println("====================================================");
+
+        sc.close();
     }
 }
