@@ -3,75 +3,79 @@ import java.util.Scanner;
 public class Operator {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("========================================");
-        System.out.println("   PROGRAM PENGGAJIAN KARYAWAN");
-        System.out.println("========================================");
+        Scanner input = new Scanner(System.in);
 
-        // ---- INPUT GOLONGAN ----
-        System.out.print("Masukkan Golongan Karyawan (A / B / C): ");
-        String golongan = sc.nextLine().trim().toUpperCase();
+        // Array Gaji Pokok
+        int[] gaji = {5000000, 6500000, 9500000};
 
-        // ---- INPUT JAM LEMBUR ----
-        System.out.print("Masukkan Jam Lembur (0 jika tidak lembur): ");
-        int jamLembur = sc.nextInt();
+        // Array Persentase Lembur
+        double[] lembur = {0.30, 0.32, 0.34, 0.36, 0.38};
 
-        // STRUKTUR KEPUTUSAN: Tentukan Gaji Pokok
-        double gajiPokok;
+        String golongan;
+        int jamLembur;
+        int gajiPokok = 0;
+        double persenLembur = 0;
+        double gajiLembur;
+        double totalGaji;
 
-        if (golongan.equals("A")) {
-            gajiPokok = 5000000;
-        } else if (golongan.equals("B")) {
-            gajiPokok = 6500000;
-        } else if (golongan.equals("C")) {
-            gajiPokok = 9500000;
+        System.out.println("================================================");
+        System.out.println("         PROGRAM PERHITUNGAN GAJI KARYAWAN      ");
+        System.out.println("================================================");
+
+        // Input Golongan
+        System.out.print("Masukkan Golongan Karyawan [A/B/C] : ");
+        golongan = input.nextLine();
+
+        // Menentukan Gaji Pokok
+        if (golongan.equalsIgnoreCase("A")) {
+            gajiPokok = gaji[0];
+        } else if (golongan.equalsIgnoreCase("B")) {
+            gajiPokok = gaji[1];
+        } else if (golongan.equalsIgnoreCase("C")) {
+            gajiPokok = gaji[2];
         } else {
-            System.out.println("\n[!] Golongan tidak valid! Masukkan A, B, atau C.");
-            sc.close();
+            System.out.println("\nGolongan tidak valid!");
             return;
         }
 
-        // STRUKTUR KEPUTUSAN: Tentukan % Lembur
-        double persenLembur;
+        // Input Jam Lembur
+        System.out.print("Masukkan Jumlah Jam Lembur        : ");
+        jamLembur = input.nextInt();
 
+        // Menentukan Persentase Lembur
         if (jamLembur == 1) {
-            persenLembur = 30;
+            persenLembur = lembur[0];
         } else if (jamLembur == 2) {
-            persenLembur = 32;
+            persenLembur = lembur[1];
         } else if (jamLembur == 3) {
-            persenLembur = 34;
+            persenLembur = lembur[2];
         } else if (jamLembur == 4) {
-            persenLembur = 36;
+            persenLembur = lembur[3];
         } else if (jamLembur >= 5) {
-            persenLembur = 38;
+            persenLembur = lembur[4];
         } else {
-            persenLembur = 0; // tidak lembur
+            persenLembur = 0;
         }
 
-        // HITUNG GAJI LEMBUR & TOTAL
-        double gajiLembur    = gajiPokok * (persenLembur / 100);
-        double totalPenghasilan = gajiPokok + gajiLembur;
+        // Perhitungan
+        gajiLembur = gajiPokok * persenLembur;
+        totalGaji = gajiPokok + gajiLembur;
 
-        // OUTPUT / CETAK HASIL
-        System.out.println("\n========================================");
-        System.out.println("         RINCIAN PENGHASILAN");
-        System.out.println("========================================");
-        System.out.printf("  Golongan Karyawan  : %s%n", golongan);
-        System.out.printf("  Gaji Pokok         : Rp %,.0f%n", gajiPokok);
+        // Output
+        System.out.println("\n================================================");
+        System.out.println("              HASIL PERHITUNGAN                 ");
+        System.out.println("================================================");
+        System.out.println("Golongan Karyawan  : " + golongan.toUpperCase());
+        System.out.println("Gaji Pokok         : Rp " + gajiPokok);
+        System.out.println("Jam Lembur         : " + jamLembur + " Jam");
+        System.out.println("Persentase Lembur  : " + (persenLembur * 100) + "%");
+        System.out.println("Gaji Lembur        : Rp " + gajiLembur);
+        System.out.println("------------------------------------------------");
+        System.out.println("Total Gaji         : Rp " + totalGaji);
+        System.out.println("================================================");
+        System.out.println("        Terima Kasih Telah Menggunakan Program  ");
+        System.out.println("================================================");
 
-        if (jamLembur > 0) {
-            System.out.printf("  Jam Lembur         : %d Jam%n", jamLembur);
-            System.out.printf("  Persentase Lembur  : %.0f%%%n", persenLembur);
-            System.out.printf("  Gaji Lembur        : Rp %,.0f%n", gajiLembur);
-        } else {
-            System.out.println("  Jam Lembur         : Tidak Lembur");
-        }
-
-        System.out.println("----------------------------------------");
-        System.out.printf("  JUMLAH PENGHASILAN : Rp %,.0f%n", totalPenghasilan);
-        System.out.println("========================================");
-
-        sc.close();
     }
 }
