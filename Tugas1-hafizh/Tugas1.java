@@ -11,7 +11,7 @@ public class Tugas1 {
 
         // 2️ Deklarasi variabel String
         // akan menampilkan output dari tipe data string "KataBaru"
-        String KataBaru = "Deklarasi tipe data String";
+        String KataBaru = "Muhamad Hafizh Aliyuddin";
         System.out.println("2. Isi variabel KataBaru: " + KataBaru);
 
         // 3️ Deklarasi array 1 dimensi
@@ -44,7 +44,7 @@ public class Tugas1 {
         listAngka.add(19);
         listAngka.add(44);
         listAngka.add(60);
-        listAngka.add(34);
+        listAngka.add(35);
 
         System.out.println("5. Isi Linked List listAngka: " + listAngka);
     }
